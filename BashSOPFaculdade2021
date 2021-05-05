@@ -1,0 +1,27 @@
+read nome
+if [[ -f /home/samuel/$nome.java ]]
+then
+    echo "O arquivo" $nome "existe nesse diretório"
+else
+    echo "O arquivo" $nome "não existe nesse diretório"
+fi
+if [[ -f /home/samuel/$nome.class ]]
+then
+    echo "O arquivo" $nome.class "existe nesse diretório e será excluído"
+    rm $nome.class
+else
+    echo "O arquivo" $nome.class "não existe nesse diretório"
+fi
+if [[ -f /home/samuel/$nome.java ]]
+then
+    javac $nome.java
+else
+    echo "Não é possível compilar, pois não existe um arquivo.java no diretório"
+fi
+if [[ -f /home/samuel/$nome.class ]]
+then
+    echo "O arquivo" $nome.class "foi gerado com sucesso"
+    java $nome
+else
+    echo "Erro! O código não foi compilado"
+fi
